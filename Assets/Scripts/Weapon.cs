@@ -5,12 +5,12 @@ using UnityEngine;
 public class Weapon : Collidable
 {
     // Damage Struct
-    public int damagePoint = 1;
-    public float pushForce = 2.0f;
+    public int[] damagePoint = { 1, 2, 3, 4, 5, 6, 7 };
+    public float[] pushForce = { 2.000f, 2.200f, 2.420f, 2.662f, 2.928f, 3.221f, 3.543f };
 
     // Upgrade Section
     public int weaponLevel = 0;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     // Swing
     private Animator anim;
@@ -20,8 +20,7 @@ public class Weapon : Collidable
     protected override void Start()
     {
         base.Start();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
@@ -50,9 +49,9 @@ public class Weapon : Collidable
             // Create a new damage object, then we'll send it to the fighter we've hit.
             Damage dmg = new Damage
             {
-                damageAmount = damagePoint,
+                damageAmount = damagePoint[weaponLevel],
                 origin = transform.position,
-                pushForce = pushForce
+                pushForce = pushForce[weaponLevel]
             };
 
             coll.SendMessage("ReceiveDamage", dmg);
@@ -64,4 +63,17 @@ public class Weapon : Collidable
         anim.SetTrigger("Swing");
     }
 
+    public void UpgradeWeapon()
+    {
+        weaponLevel++;
+        spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+
+        // Change Stats
+    }
+
+    public void SetWeaponLevel(int Level)
+    {
+        weaponLevel = Level;
+        spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+    }
 }
