@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * https://www.youtube.com/watch?v=b8YUfee_pzc&t=288s 
- * 
- * 5:59:28 / 7:45:48
- */
-
 [RequireComponent(typeof(BoxCollider2D))]
 
 public class Player : Mover
