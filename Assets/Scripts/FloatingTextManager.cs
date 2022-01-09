@@ -12,7 +12,7 @@ public class FloatingTextManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject); //-- This line needs to be deleted after creating a script.
     }
 
     private void Update()

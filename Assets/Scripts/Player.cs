@@ -12,7 +12,12 @@ public class Player : Mover
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject); //-- This line needs to be deleted after creating a script.
+    }
+    protected override void ReceiveDamage(Damage dmg)
+    {
+        base.ReceiveDamage(dmg);
+        GameManager.instance.OnHitPointChange();
     }
     private void FixedUpdate()
     {
@@ -30,7 +35,6 @@ public class Player : Mover
         maxHitPoint++;
         hitPoint = maxHitPoint;
     }
-
     public void SetLevel(int level)
     {
         for (int i = 0; i < level; i++)
@@ -38,7 +42,6 @@ public class Player : Mover
             OnLevelUp();
         }
     }
-    
     public void Heal(int healingAmount)
     {
         if (hitPoint == maxHitPoint)
@@ -54,5 +57,6 @@ public class Player : Mover
         }
 
         GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.0f);
+        GameManager.instance.OnHitPointChange();
     }
 }

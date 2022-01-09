@@ -14,12 +14,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Destroy(player.gameObject);
             Destroy(floatingTextManager.gameObject);
+            Destroy(hud);
+            Destroy(menu);
             return;
         }
 
         instance = this;
         SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject); //-- This line needs to be deleted after creating a script.
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // Resources for the game:
@@ -30,9 +33,11 @@ public class GameManager : MonoBehaviour
 
     // References
     public Player player;
-
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
+    public RectTransform hitPointBar;
+    public GameObject hud;
+    public GameObject menu;
 
     // Logic
     public int pesos;
@@ -64,6 +69,13 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    // Hitpoint Bar
+    public void OnHitPointChange()
+    {
+        float ratio = (float)player.hitPoint / (float)player.maxHitPoint;
+        hitPointBar.localScale = new Vector3(1, ratio, 1);
+    }
+    
     // Experience System
     public int GetCurrentLevel()
     {
@@ -111,14 +123,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Level Up");
         player.OnLevelUp();
+        OnHitPointChange();
     }
-    // Save State
-    /*
-     * INT preferedSkin
-     * INT pesos
-     * INT experience
-     * INT weaponLevel
-     */
+   
+    // On Scene Loaded
+    public void OnSceneLoaded(Scene s, LoadSceneMode mode)
+    {
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+    }
+
     public void SaveState()
     {
         string s = "";
@@ -133,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadState(Scene s, LoadSceneMode mode)
     {
+        SceneManager.sceneLoaded -= LoadState;
         if (!PlayerPrefs.HasKey("SaveState"))
         {
             return;

@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\EnemyHitbox.cs" />
     <Compile Include="Assets\Scripts\HealingFountain.cs" />
     <Compile Include="Assets\Scripts\Crate.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
