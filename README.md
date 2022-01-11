@@ -20,9 +20,13 @@
       * An improved instructor, that tells the way to play the game effectively.
       * Brand new levels, new bosses etc.
       * A menu state, a pause state etc.
+	  
+# In-game Pictures
 
-## Contributing
+<img src="run/pictures/TheGame_picture_0.png" width="250"> <img src="run/pictures/TheGame_picture_1.png" width="250"> <img src="run/pictures/TheGame_picture_2.png" width="250">
+
+# Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+# License
 * I'm not sure how ethic it would be, but I would like to add a license, that is [MIT](https://choosealicense.com/licenses/mit/).
