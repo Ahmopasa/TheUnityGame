@@ -25,8 +25,16 @@
 
 <img src="run/pictures/TheGame_picture_0.png" width="250"> <img src="run/pictures/TheGame_picture_1.png" width="250"> <img src="run/pictures/TheGame_picture_2.png" width="250">
 
+# Installation
+
+* I haven't tested the game on other computers, but following instructions should work to run the game:
+	* Download the _run_ folder and run the .exe file in it.
+	
+* Since I did not build this game using another Pc, I cannot direct you. However, if you download directly, then you can open it using Unity.
+
 # Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+* Currently, the release level is v1.0.0. With major patch, I'll increase the zero in middle, such as v1.1.0, v1.2.0 etc. With minor patch, I'll increase the right-most zero, such as v1.0.1, v1.0.2 etc.
+* Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 # License
 * I'm not sure how ethic it would be, but I would like to add a license, that is [MIT](https://choosealicense.com/licenses/mit/).
