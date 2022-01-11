@@ -6,7 +6,7 @@ public class HealingFountain : Collidable
 {
     public int healingAmount = 1;
 
-    private float healCooldown = 1.0f;
+    private float healCooldown = 2.0f;
     private float lastHeal;
 
     protected override void OnCollide(Collider2D coll)
@@ -16,8 +16,10 @@ public class HealingFountain : Collidable
             return;
         }
 
-        lastHeal = Time.time;
-        GameManager.instance.player.Heal(healingAmount);
-
+        if (Time.time - lastHeal > healCooldown)
+        {
+            lastHeal = Time.time;
+            GameManager.instance.player.Heal(healingAmount);
+        }
     }
 }
