@@ -14,7 +14,7 @@ public class Weapon : Collidable
 
     // Swing
     private Animator anim;
-    private float cooldown = 0.5f;
+    private float cooldown = 0.0002f;
     private float lastSwing;
 
     protected override void Start()
@@ -67,8 +67,6 @@ public class Weapon : Collidable
     {
         weaponLevel++;
         spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
-
-        // Change Stats
     }
 
     public void SetWeaponLevel(int Level)

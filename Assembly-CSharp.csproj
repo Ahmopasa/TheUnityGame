@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\CameraMotor.cs" />
     <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\Scripts\Boss.cs" />
+    <Compile Include="Assets\Scripts\Patrol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

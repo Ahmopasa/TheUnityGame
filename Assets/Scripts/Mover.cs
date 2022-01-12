@@ -9,8 +9,8 @@ public abstract class Mover : Fighter
     protected BoxCollider2D boxCollider;
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
-    protected float ySpeed = 0.75f;
-    protected float xSpeed = 1.0f;
+    public float ySpeed = 0.75f;
+    public float xSpeed = 1.0f;
 
     protected virtual void Start()
     {
@@ -40,6 +40,7 @@ public abstract class Mover : Fighter
         // Reduce push force every frame, based off recovery speed:
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
+
         // Make sure we can move in this direction, by casting a box there first. 
         // If the box returns null, we are free to go.
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
@@ -49,6 +50,7 @@ public abstract class Mover : Fighter
             // transform.Translate(moveDelta * Time.deltaTime);
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
         }
+
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)
         {

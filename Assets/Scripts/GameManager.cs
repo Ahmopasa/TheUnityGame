@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         SceneManager.sceneLoaded += LoadState;
-        // DontDestroyOnLoad(gameObject); //-- This line needs to be deleted after creating a script.
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
